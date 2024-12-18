@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://localhost/attendance_management_system/server/permission_attendance/server.php" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap-enc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="AttendanceIzin" targetNamespace="http://localhost/attendance_management_system/server/permission_attendance/server.php">
+  <types>
+    <xsd:schema targetNamespace="http://localhost/attendance_management_system/server/permission_attendance/server.php">
+      <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+    </xsd:schema>
+  </types>
+  <portType name="AttendanceIzinPort">
+    <operation name="__construct">
+      <input message="tns:__constructIn"/>
+    </operation>
+    <operation name="getIzinInfo">
+      <documentation>Mendapatkan semua data izin dari database</documentation>
+      <input message="tns:getIzinInfoIn"/>
+      <output message="tns:getIzinInfoOut"/>
+    </operation>
+    <operation name="acceptIzin">
+      <documentation>Mengubah status izin menjadi accepted berdasarkan ID</documentation>
+      <input message="tns:acceptIzinIn"/>
+      <output message="tns:acceptIzinOut"/>
+    </operation>
+  </portType>
+  <binding name="AttendanceIzinBinding" type="tns:AttendanceIzinPort">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="__construct">
+      <soap:operation soapAction="http://localhost/attendance_management_system/server/permission_attendance/server.php#__construct"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost/attendance_management_system/server/permission_attendance/server.php"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost/attendance_management_system/server/permission_attendance/server.php"/>
+      </output>
+    </operation>
+    <operation name="getIzinInfo">
+      <soap:operation soapAction="http://localhost/attendance_management_system/server/permission_attendance/server.php#getIzinInfo"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost/attendance_management_system/server/permission_attendance/server.php"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost/attendance_management_system/server/permission_attendance/server.php"/>
+      </output>
+    </operation>
+    <operation name="acceptIzin">
+      <soap:operation soapAction="http://localhost/attendance_management_system/server/permission_attendance/server.php#acceptIzin"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost/attendance_management_system/server/permission_attendance/server.php"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost/attendance_management_system/server/permission_attendance/server.php"/>
+      </output>
+    </operation>
+  </binding>
+  <message name="__constructIn">
+    <part name="pdo" type="xsd:anyType"/>
+  </message>
+  <message name="getIzinInfoIn"/>
+  <message name="getIzinInfoOut">
+    <part name="return" type="soap-enc:Array"/>
+  </message>
+  <message name="acceptIzinIn">
+    <part name="id" type="xsd:int"/>
+  </message>
+  <message name="acceptIzinOut">
+    <part name="return" type="soap-enc:Array"/>
+  </message>
+  <service name="AttendanceIzinService">
+    <port name="AttendanceIzinPort" binding="tns:AttendanceIzinBinding">
+      <soap:address location="http://localhost/attendance_management_system/server/permission_attendance/server.php"/>
+    </port>
+  </service>
+</definitions>

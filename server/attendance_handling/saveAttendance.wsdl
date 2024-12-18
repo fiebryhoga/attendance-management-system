@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://localhost/attendance_management_system/server/attendance_handling/server.php" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap-enc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="SaveAttendance" targetNamespace="http://localhost/attendance_management_system/server/attendance_handling/server.php">
+  <types>
+    <xsd:schema targetNamespace="http://localhost/attendance_management_system/server/attendance_handling/server.php">
+      <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+    </xsd:schema>
+  </types>
+  <portType name="SaveAttendancePort">
+    <operation name="__construct">
+      <input message="tns:__constructIn"/>
+    </operation>
+    <operation name="saveAttendance">
+      <input message="tns:saveAttendanceIn"/>
+    </operation>
+    <operation name="getAttendanceHadir">
+      <input message="tns:getAttendanceHadirIn"/>
+    </operation>
+    <operation name="getAttendanceSakit">
+      <input message="tns:getAttendanceSakitIn"/>
+    </operation>
+  </portType>
+  <binding name="SaveAttendanceBinding" type="tns:SaveAttendancePort">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="__construct">
+      <soap:operation soapAction="http://localhost/attendance_management_system/server/attendance_handling/server.php#__construct"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost/attendance_management_system/server/attendance_handling/server.php"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost/attendance_management_system/server/attendance_handling/server.php"/>
+      </output>
+    </operation>
+    <operation name="saveAttendance">
+      <soap:operation soapAction="http://localhost/attendance_management_system/server/attendance_handling/server.php#saveAttendance"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost/attendance_management_system/server/attendance_handling/server.php"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost/attendance_management_system/server/attendance_handling/server.php"/>
+      </output>
+    </operation>
+    <operation name="getAttendanceHadir">
+      <soap:operation soapAction="http://localhost/attendance_management_system/server/attendance_handling/server.php#getAttendanceHadir"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost/attendance_management_system/server/attendance_handling/server.php"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost/attendance_management_system/server/attendance_handling/server.php"/>
+      </output>
+    </operation>
+    <operation name="getAttendanceSakit">
+      <soap:operation soapAction="http://localhost/attendance_management_system/server/attendance_handling/server.php#getAttendanceSakit"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost/attendance_management_system/server/attendance_handling/server.php"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost/attendance_management_system/server/attendance_handling/server.php"/>
+      </output>
+    </operation>
+  </binding>
+  <message name="__constructIn">
+    <part name="pdo" type="xsd:anyType"/>
+  </message>
+  <message name="saveAttendanceIn">
+    <part name="employeeName" type="xsd:anyType"/>
+    <part name="status" type="xsd:anyType"/>
+  </message>
+  <message name="getAttendanceHadirIn">
+    <part name="employeeName" type="xsd:anyType"/>
+    <part name="month" type="xsd:anyType"/>
+  </message>
+  <message name="getAttendanceSakitIn">
+    <part name="employeeName" type="xsd:anyType"/>
+    <part name="month" type="xsd:anyType"/>
+  </message>
+  <service name="SaveAttendanceService">
+    <port name="SaveAttendancePort" binding="tns:SaveAttendanceBinding">
+      <soap:address location="http://localhost/attendance_management_system/server/attendance_handling/server.php"/>
+    </port>
+  </service>
+</definitions>

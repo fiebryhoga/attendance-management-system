@@ -11,14 +11,12 @@ class AttendanceIzin
     }
 
     /**
-     * Mendapatkan semua data izin dari database
      *
-     * @return array - Data izin atau pesan kesalahan
+     * @return array - 
      */
     public function getIzinInfo()
 {
     try {
-        // Query untuk mengambil data izin yang statusnya 'pending'
         $stmt = $this->pdo->query("SELECT * FROM attendance_izin WHERE status = 'pending'");
         $izinData = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -38,10 +36,9 @@ class AttendanceIzin
 
 
     /**
-     * Mengubah status izin menjadi accepted berdasarkan ID
      *
-     * @param int $id - ID izin
-     * @return array - Status berhasil atau pesan kesalahan
+     * @param int 
+     * @return array
      */
     public function acceptIzin($id)
     {

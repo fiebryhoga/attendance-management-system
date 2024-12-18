@@ -1,19 +1,17 @@
 <?php
-require '../config/connection.php'; // Pastikan path sesuai dengan lokasi file Anda
+require '../config/connection.php'; 
 
 header('Content-Type: application/json');
 
-// Ambil data JSON dari permintaan POST
 $data = json_decode(file_get_contents('php://input'), true);
 
 if (isset($data['employee_name'], $data['status']) && $data['status'] === 'Hadir') {
     $employeeName = $data['employee_name'];
     $status = $data['status'];
-    $currentDate = date('Y-m-d'); // Ambil tanggal saat ini
-    $currentMonth = date('m'); // Ambil bulan saat ini (angka)
+    $currentDate = date('Y-m-d');
+    $currentMonth = date('m');
 
     try {
-        // Simpan data ke tabel attendance_records
         $stmt = $pdo->prepare(
             "INSERT INTO attendance_records (employee_name, status, date, month) VALUES (:employee_name, :status, :date, :month)"
         );

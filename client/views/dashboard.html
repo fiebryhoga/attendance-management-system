@@ -19,6 +19,24 @@
         <div id="attendance-container">
             <!-- Data presensi akan ditampilkan di sini -->
         </div>
+
+        <!-- Lihat Slip Gaji -->
+        <div id="salary-slip-container">
+            <h2>Lihat Slip Gaji</h2>
+            <form id="salary-form">
+                <label for="employee-name">Nama Karyawan:</label>
+                <input type="text" id="employee-name" name="employee-name" required>
+
+                <label for="salary-month">Bulan (1-12):</label>
+                <input type="number" id="salary-month" name="salary-month" min="1" max="12" required>
+
+
+                <button type="submit">Lihat Slip Gaji</button>
+            </form>
+            <div id="salary-slip-result">
+                <!-- Hasil slip gaji akan ditampilkan di sini -->
+            </div>
+        </div>
     </main>
 
     <!-- Footer -->
@@ -27,6 +45,7 @@
     </footer>
 
     <script src="script.js"></script>
+    <script src="slipgaji.js"></script>
 </body>
 
 </html>

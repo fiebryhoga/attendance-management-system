@@ -8,15 +8,13 @@ document.addEventListener("DOMContentLoaded", async () => {
       );
       const result = await response.json();
 
-      attendanceContainer.innerHTML = ""; // Kosongkan kontainer sebelum menambahkan data baru
+      attendanceContainer.innerHTML = ""; 
 
       if (result.length > 0) {
         result.forEach((attendance) => {
-          // Buat section untuk setiap presensi
           const attendanceSection = document.createElement("section");
           attendanceSection.classList.add("attendance-section");
 
-          // Tambahkan data ke section
           attendanceSection.innerHTML = `
                         <h3>Presensi ID: ${attendance.id}</h3>
                         <p><strong>Tanggal:</strong> ${attendance.date}</p>
@@ -43,7 +41,6 @@ document.addEventListener("DOMContentLoaded", async () => {
           attendanceContainer.appendChild(attendanceSection);
         });
 
-        // Tambahkan event listener ke tombol setelah elemen dibuat
         document.querySelectorAll(".hadir-btn").forEach((btn) => {
           btn.addEventListener("click", (e) => {
             const attendanceId = e.target.getAttribute("data-id");
@@ -91,10 +88,9 @@ document.addEventListener("DOMContentLoaded", async () => {
               }
 
               await sendIzinData(attendanceId, employeeName, reason);
-              reasonForm.style.display = "none"; // Sembunyikan form setelah berhasil disimpan
+              reasonForm.style.display = "none";
             };
 
-            // Tangani klik tombol submit izin
             reasonInput.onblur = saveIzinHandler;
           });
         });
@@ -165,6 +161,5 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   }
 
-  // Ambil data presensi saat halaman dimuat
   fetchAttendanceData();
 });

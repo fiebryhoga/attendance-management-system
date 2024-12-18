@@ -9,7 +9,6 @@ class SaveAttendance
         $this->pdo = $pdo;
     }
 
-    // Method untuk menyimpan data kehadiran
     public function saveAttendance($employeeName, $status)
     {
         try {
@@ -29,7 +28,6 @@ class SaveAttendance
         }
     }
 
-    // Method untuk mendapatkan kehadiran (Hadir)
     public function getAttendanceHadir($employeeName, $month)
     {
         try {
@@ -51,7 +49,6 @@ class SaveAttendance
         }
     }
 
-    // Method untuk mendapatkan kehadiran (Sakit)
     public function getAttendanceSakit($employeeName, $month)
     {
         try {

@@ -1,18 +1,15 @@
 <?php
-require '../config/connection.php'; // Pastikan path ini sesuai dengan lokasi file koneksi database Anda
+require '../config/connection.php';
 
 header('Content-Type: application/json');
 
-// Fungsi untuk menangani pengambilan data presensi
 function getAttendance($pdo)
 {
-    // Ambil parameter nama dan bulan dari query string
     $name = isset($_GET['name']) ? $_GET['name'] : null;
     $month = isset($_GET['month']) ? $_GET['month'] : null;
 
     if ($name && $month) {
         try {
-            // Query untuk mengambil data presensi berdasarkan nama dan bulan
             $stmt = $pdo->prepare(
                 "SELECT employee_name, status, date
                  FROM attendance_records
@@ -36,7 +33,6 @@ function getAttendance($pdo)
     }
 }
 
-// Cek metode HTTP
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     getAttendance($pdo);
 } else {
